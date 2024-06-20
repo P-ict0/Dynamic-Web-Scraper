@@ -12,9 +12,9 @@
 - [Contributing](#contributing)
 
 
-# AngularJS Dynamic Web Scraper
+# 🌐 AngularJS Dynamic Web Scraper
 
-**Windows and Linux compatible.**
+💻 **Windows and Linux compatible.** 💻
 
 This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
 This can be used to monitor when a new element is added to the website instead of having to manually refresh it.
@@ -31,14 +31,14 @@ This is useful, for example to notify you when a certain keyword is found on a w
 - New article on a blog post
 - ...
 
-# Features
+# ✨ Features
 
 - **Automated Scraping:** Runs at user-defined intervals, extracting data without manual input.
 - **Notification System:** Notifies users via Windows notifications when new data is found.
 - **Robust Parsing:** Utilizes customizable search strings and regular expressions for data extraction.
 
 
-# Installation
+# 📦 Installation
 
 (Go [below](#manual-installation) for manual installation.)
 
@@ -67,7 +67,7 @@ cd AngularJS-Dynamic-Web-Scraper
 python -m pip install .
 ```
 
-# Usage
+# 📲 Usage
 
 ```bash
 ajs-scraper --help
@@ -107,7 +107,7 @@ Also see [common errors](#common-errors) if you encounter any issues with the br
 _Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._
 
 
-# Manual Installation
+# ✏ Manual Installation
 
 ```bash
 git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
@@ -130,10 +130,10 @@ You can now run:
 python src/web_scraper/scraper.py [args]
 ```
 
-# Common errors
+# ❌ Common errors
 
 You may also need to install the latest geckodriver from [here](https://github.com/mozilla/geckodriver/releases) and add it to your PATH.
 
-# Contributing
+# 👥 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your suggested changes.
