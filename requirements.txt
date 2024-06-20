@@ -1,0 +1,7 @@
+beautifulsoup4==4.12.3
+bs4==0.0.2
+colorlog==6.8.2
+lxml==5.2.2
+path==16.14.0
+selenium==4.21.0
+win11toast==0.35
