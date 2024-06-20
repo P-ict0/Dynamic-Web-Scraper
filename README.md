@@ -75,7 +75,7 @@ python src/web_scraper.py --help
 ## Basic Usage
 
 ```bash
-python scraper.py -u "https://www.example.com" -s "search this text"
+python src/web_scraper.py -u "https://www.example.com" -s "search this text"
 ```
 
 ## Options
