@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "angularjs-web-scraper"
+version = "0.1.0"
+authors = [
+    { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
+]
+description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = [
+    "beautifulsoup4==4.12.3",
+    "bs4==0.0.2",
+    "colorlog==6.8.2",
+    "lxml==5.2.2",
+    "path==16.14.0",
+    "selenium==4.21.0",
+    "win11toast==0.35; ; platform_system == 'Windows'",
+]
+
+[project.scripts]
+angularjs-web-scraper = "web_scraper:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["utils"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"" = ["data/*.json"]  # Include data.json in the package
