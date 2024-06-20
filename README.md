@@ -18,6 +18,8 @@
 This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
 This can be used to monitor when a new element is added to the website instead of having to manually refresh it.
 
+Instead of looking at the source, it waits until all elements are loaded to retrieve the results by using a browser driver
+
 Whenever a new element is discovered, it will notify you and save it to a file so that it doesn't notify you again for that same element in the future.
 
 # Use case examples
