@@ -23,7 +23,7 @@ Instead of looking at the source, it waits until all elements are loaded to retr
 
 Whenever a new element is discovered, it will notify you and save it to a file so that it doesn't notify you again for that same element in the future.
 
-# Use case examples
+# 💡 Use case examples
 This is useful, for example to notify you when a certain keyword is found on a website, such as:
 
 - New job on a job board
