@@ -121,7 +121,7 @@ class Scraper:
         self.iteration += 1
 
 
-def main():
+def run():
     print("Initializing web scraper...")
     args = collect_arguments()
     main = Scraper(
@@ -132,4 +132,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    run()
