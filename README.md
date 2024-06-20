@@ -7,8 +7,8 @@
   - [Requirements](#requirements)
   - [Setup](#setup)
 - [Usage](#usage)
-  - [Help:](#help)
-  - [Basic Usage:](#basic-usage)
+  - [Help](#help)
+  - [Basic Usage](#basic-usage)
   - [Options](#options)
 - [Contributing](#contributing)
 
@@ -17,6 +17,8 @@
 
 This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
 This can be used to monitor when a new element is added to the website instead of having to manually refresh it.
+
+Instead of looking at the source, it waits until all elements are loaded to retrieve the results by using selenium and a Firefox driver.
 
 Whenever a new element is discovered, it will notify you and save it to a file so that it doesn't notify you again for that same element in the future.
 
@@ -65,15 +67,15 @@ pip install -r requirements.txt
 
 # Usage
 
-## Help:
+## Help
 ```bash
 python src/web_scraper.py --help
 ```
 
-## Basic Usage:
+## Basic Usage
 
 ```bash
-python scraper.py -u "https://www.example.com" -s "search this text"
+python src/web_scraper.py -u "https://www.example.com" -s "search this text"
 ```
 
 ## Options
