@@ -62,9 +62,7 @@ def collect_arguments() -> argparse.Namespace:
         "-j",
         required=False,
         type=str,
-        default=pathlib.Path(__file__).parent.parent.resolve()
-        / "data"
-        / "results.json",
+        default=pathlib.Path(__file__).parent.parent.resolve() / "results.json",
         help="Path to save the found results as JSON",
     )
 

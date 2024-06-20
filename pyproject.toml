@@ -1,16 +1,30 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "angularjs-web-scraper"
 version = "0.1.0"
+description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
+readme = "README.md"
+requires-python = ">=3.10"
 authors = [
     { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
 ]
-description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
-readme = "README.md"
+maintainers = [
+    { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
+]
 license = { file = "LICENSE" }
+keywords = ["web", "setuptools", "development", "scraper", "angularjs", "selenium"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
 dependencies = [
     "beautifulsoup4==4.12.3",
     "bs4==0.0.2",
@@ -18,16 +32,17 @@ dependencies = [
     "lxml==5.2.2",
     "path==16.14.0",
     "selenium==4.21.0",
-    "win11toast==0.35; ; platform_system == 'Windows'",
+    "win11toast==0.35 ; platform_system == 'Windows'",
 ]
 
+[project.urls]
+"Homepage" = "https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git"
+"Bug Reports" = "https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper/issues"
+
 [project.scripts]
-angularjs-web-scraper = "web_scraper:main"
+angularjs-web-scraper = "src.web_scraper:main"
 
 [tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["utils"]
+packages = ["src.web_scraper", "src.web_scraper.utils"]
 include-package-data = true
-
-[tool.setuptools.package-data]
-"" = ["data/*.json"]  # Include data.json in the package
+package-data = {"web_scraper" = ["results.json"]}  # Include results.json in the package
