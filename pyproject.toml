@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ajs-scraper"
-version = "0.1.1"
+version = "0.1.2"
 description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
 readme = "README.md"
 requires-python = ">=3.10"
