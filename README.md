@@ -84,11 +84,16 @@ python src/web_scraper.py -u "https://www.example.com" -s "search this text"
 
 - `--search_string, -s`: Required. The string you want to search for within the webpage.
 
-- `--regex, -r`: Optional. The regular expression pattern used to search within the webpage. Default = `search_string`.
+- `--regex, -r`: Optional. The regular expression pattern used to search within the webpage.
+  - Default = `search_string`.
 
-- `--interval, -i`: Optional. The interval in minutes at which the script should run repeatedly. Default is 5 minutes. Default = `5`.
+- `--interval, -i`: Optional. The interval in minutes at which the script should run repeatedly.
+  - Default = `5`.
 
-- `--json_path, -j`: Optional. The file path where the found results will be saved as JSON. Default is a path relative to the script location. Default = `data/results.json`.
+- `--json_path, -j`: Optional. The file path where the found results will be saved as JSON. Default is a path relative to the script location.
+  - Default = `data/results.json`.
+
+- `--no-headless`: Optional. Disable headless mode for the webdriver and run maximized
 
 - `--verbose, -v`: Optional. Enable verbose mode to receive more detailed output in the terminal during script execution.
 
