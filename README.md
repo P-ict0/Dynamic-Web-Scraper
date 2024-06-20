@@ -1,17 +1,18 @@
 # 😁 Welcome!!
 
 # Contents
+- [😁 Welcome!!](#-welcome)
 - [Contents](#contents)
-- [AngularJS Dynamic Web Scraper](#angularjs-dynamic-web-scraper)
-- [Use case examples](#use-case-examples)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
+- [🌐 AngularJS Dynamic Web Scraper](#-angularjs-dynamic-web-scraper)
+- [💡 Use case examples](#-use-case-examples)
+- [✨ Features](#-features)
+- [📦 Installation](#-installation)
+- [📲 Usage](#-usage)
   - [Basic](#basic)
   - [Options](#options)
-- [Manual Installation](#manual-installation)
-- [Common errors](#common-errors)
-- [Contributing](#contributing)
+- [✏ Manual Installation](#-manual-installation)
+- [❌ Common errors](#-common-errors)
+- [👥 Contributing](#-contributing)
 
 
 # 🌐 AngularJS Dynamic Web Scraper
