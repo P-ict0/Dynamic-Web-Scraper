@@ -87,7 +87,7 @@ Also see [common errors](#common-errors) if you encounter any issues with the br
 
 - `--search_string, -s`: Required. The string you want to search for within the webpage.
 
-- `--regex, -r`: Optional. The regular expression pattern used to search within the webpage.
+- `--regex, -r`: Optional. The regular expression pattern used to store the results nicely.
   - Default = `search_string`.
 
 - `--interval, -i`: Optional. The interval in minutes at which the script should run repeatedly.

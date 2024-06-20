@@ -23,7 +23,7 @@ def collect_arguments() -> argparse.Namespace:
         "--verbose",
         action="count",
         default=0,
-        help="Increase verbosity level (-v, -vv, -vvv, etc.)",
+        help="(Optional) Increase verbosity level (-v, -vv, -vvv, etc.)",
     )
 
     parser.add_argument(
@@ -37,24 +37,22 @@ def collect_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--regex",
         "-r",
-        required=False,
         type=str,
-        help="Regex pattern to search for in the webpage",
+        help="(Optional) Regex pattern to store the results nicely, instead of the whole block",
     )
 
     parser.add_argument(
         "--interval",
         "-i",
-        required=False,
         type=int,
         default=5,
-        help="Interval in minutes to run the script repeatedly",
+        help="(Optional) Interval in minutes to run the script repeatedly. Default = 5 minutes",
     )
 
     parser.add_argument(
         "--no-headless",
         action="store_true",
-        help="Don't run the browser in headless mode",
+        help="(Optional) Don't run the browser in headless mode",
     )
 
     parser.add_argument(
@@ -63,7 +61,7 @@ def collect_arguments() -> argparse.Namespace:
         required=False,
         type=str,
         default=pathlib.Path(__file__).parent.parent.resolve() / "results.json",
-        help="Path to save the found results as JSON",
+        help="(Optional) Specific path to save the found results as JSON.",
     )
 
     args = parser.parse_args()
