@@ -1,8 +1,6 @@
 # 😁 Welcome!!
 
 # Contents
-- [😁 Welcome!!](#-welcome)
-- [Contents](#contents)
 - [🌐 AngularJS Dynamic Web Scraper](#-angularjs-dynamic-web-scraper)
 - [💡 Use case examples](#-use-case-examples)
 - [✨ Features](#-features)
