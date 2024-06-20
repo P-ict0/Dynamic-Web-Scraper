@@ -4,6 +4,8 @@
 - [Use case examples](#use-case-examples)
 - [Features](#features)
 - [Installation](#installation)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
 - [Usage](#usage)
   - [Help:](#help)
   - [Basic Usage:](#basic-usage)
@@ -34,6 +36,16 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 
 # Installation
+
+## Requirements
+
+```bash
+git
+```
+
+You also need to install the latest geckodriver from [here](https://github.com/mozilla/geckodriver/releases) and add it to your PATH.
+
+## Setup
 
 ```bash
 git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
