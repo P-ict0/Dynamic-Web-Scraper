@@ -35,7 +35,7 @@ def notify_user(message: str, url: str) -> None:
         )
     else:
         # Notify Linux users
-        os.system(f"notify-send 'Found new result!' '{message}'")
+        os.system(f"notify-send 'Found new result' '{message}'")
 
 
 # Testing

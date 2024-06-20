@@ -95,7 +95,10 @@ python src/web_scraper.py -u "https://www.example.com" -s "search this text"
 
 - `--no-headless`: Optional. Disable headless mode for the webdriver and run maximized
 
-- `--verbose, -v`: Optional. Enable verbose mode to receive more detailed output in the terminal during script execution.
+- `--verbose, -v`: Optional. Increase verbosity level (`-v`, `-vv`, etc.)
+  - `-v`: INFO
+  - `-vv`: DEBUG
+  - Default: WARNING
 
 
 _Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._

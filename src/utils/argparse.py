@@ -19,10 +19,11 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "--verbose",
         "-v",
-        action="store_true",
-        help="Enable verbose mode in the terminal",
+        "--verbose",
+        action="count",
+        default=0,
+        help="Increase verbosity level (-v, -vv, -vvv, etc.)",
     )
 
     parser.add_argument(

@@ -7,24 +7,22 @@ class Logger:
     A simple console logger class that outputs colorized logs.
     """
 
-    def __init__(self, name: str, verbose: bool = False) -> None:
+    def __init__(self, name: str, verbosity_level: int = 0) -> None:
         """
         Initialize a colorized console logger.
 
         Parameters:
         name (str): Name of the logger which is typically the name of the module creating the logger.
-        verbose (bool): If True, the logger will output debug messages. Default is False.
+        verbosity_level (int): The verbosity level of the logger. 0 = WARNING, 1 = INFO, 2 = DEBUG.
         """
         # Create a logger
         self.logger = logging.getLogger(name)
-        if verbose:
-            self.logger.setLevel(
-                logging.DEBUG
-            )  # Set the threshold of logger to debug level
+        if verbosity_level == 1:
+            self.logger.setLevel(logging.INFO)
+        elif verbosity_level >= 2:
+            self.logger.setLevel(logging.DEBUG)
         else:
-            self.logger.setLevel(
-                logging.INFO
-            )  # Set the threshold of logger to debug level
+            self.logger.setLevel(logging.WARNING)
 
         # Create console handler and set level to debug
         ch = logging.StreamHandler()

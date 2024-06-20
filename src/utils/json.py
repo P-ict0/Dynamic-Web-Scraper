@@ -1,5 +1,6 @@
 import json
 import os
+from .helpers import prompt_yes_no
 
 
 class Json:
@@ -53,6 +54,25 @@ class Json:
 
             return found
 
+    def create_empty_json(self) -> None:
+        """
+        Create an empty JSON file.
+        """
+        self.logger.debug(f"Creating empty JSON file: {self.path}")
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
+        with open(self.path, "w") as file:
+            json.dump([], file)
+
+    def print_json(self) -> None:
+        """
+        Print the contents of the JSON file.
+        """
+        self.logger.debug(f"Printing JSON file content: {self.path}")
+        with open(self.path, "r") as file:
+            data = json.load(file)
+            pretty_data = json.dumps(data, indent=4)
+            print(pretty_data)
+
     def ensure_json(self) -> None:
         """
         Ensure a JSON file exists and contains a list.
@@ -60,10 +80,20 @@ class Json:
 
         # Check if file exists and create with an empty list if it does not exist
         self.logger.debug(f"Ensuring JSON file exists: {self.path}")
-        if not os.path.exists(self.path):
-            os.makedirs(os.path.dirname(self.path), exist_ok=True)
-            with open(self.path, "w") as file:
-                json.dump([], file)
+        if os.path.exists(self.path):
+            self.logger.debug(f"JSON file exists: {self.path}")
+            # Ask user if they want to remove it and create a new one
+            print("Previous search results found:")
+            self.print_json()
+            if prompt_yes_no(
+                f"Do you want to remove it and create a new one?", enter_is_yes=False
+            ):
+                self.logger.debug(f"Removing existing JSON file: {self.path}")
+                os.remove(self.path)
+                self.create_empty_json()
+        else:
+            self.logger.debug(f"JSON file doesnt exist.")
+            self.create_empty_json()
 
         # Open the file to check and modify content if necessary
         self.logger.debug(f"Checking JSON file content: {self.path}")
@@ -75,6 +105,12 @@ class Json:
                     data = [data]
                 # If the file is empty or data is None, initialize to an empty list
                 elif not data:
+                    data = []
+                # If data is not a list, log an error and initialize to an empty list
+                elif not isinstance(data, list):
+                    self.logger.warning(
+                        "JSON file content is not a list, initializing to an empty list"
+                    )
                     data = []
             except json.JSONDecodeError:
                 self.logger.error(

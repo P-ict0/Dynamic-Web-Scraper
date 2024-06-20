@@ -24,11 +24,20 @@ def repeat_every(get_interval):
         def wrapper(*args, **kwargs):
             interval = get_interval(*args, **kwargs)
             while True:
-                start_time = time.time()
-                func(*args, **kwargs)
-                sleep_time = interval - (time.time() - start_time)
-                if sleep_time > 0:
-                    time.sleep(sleep_time)
+                try:
+                    start_time = time.time()
+                    func(*args, **kwargs)
+                    sleep_time = interval - (time.time() - start_time)
+                    if sleep_time > 0:
+                        time.sleep(sleep_time)
+                # Ctrl-C
+                except KeyboardInterrupt:
+                    print("\nExiting web scraper...")
+                    print(f"Ran {args[0].iteration} iterations")
+                    print(
+                        f"Time elapsed: {time.strftime('%H hours, %M minutes and %S seconds', time.gmtime(time.time() - start_time))}"
+                    )
+                    sys.exit()
 
         return wrapper
 
@@ -40,15 +49,26 @@ class Scraper:
     Function to run the web scraper every x minutes and check for new results in the page
     """
 
-    def __init__(self, script_args, verbose: bool = False) -> None:
+    def __init__(self, script_args, verbosity_level: int) -> None:
+        """
+        Initialize the web scraper with the arguments passed to the script
+
+        :param script_args: Arguments passed to the script
+        :param verbosity_level: Verbosity level for the logger
+        """
         self.args = script_args
-        self.logger = Logger(name=__name__, verbose=verbose).get_logger()
+        self.logger = Logger(
+            name=__name__, verbosity_level=verbosity_level
+        ).get_logger()
 
         # Log the arguments passed to the script
         self.log_args()
 
         # Initialize the iteration counter
         self.iteration = 1
+
+        # Check if first run
+        self.first_run = True
 
     def log_args(self) -> None:
         """
@@ -68,8 +88,13 @@ class Scraper:
 
         # Load the JSON file and the webpage
         json = Json(path=self.args.json_path, logger=self.logger)
+
+        if self.first_run:
+            print(f"\nStarting scraper at {time.strftime('%H:%M:%S')}...")
+            self.first_run = False
+
         browser = Browser(
-            url=self.args.url, no_headless=args.no_headless, logger=self.logger
+            url=self.args.url, no_headless=self.args.no_headless, logger=self.logger
         )
         page_source = browser.load_page()
 
@@ -97,18 +122,14 @@ class Scraper:
 
 
 def main():
+    print("Initializing web scraper...")
     args = collect_arguments()
     main = Scraper(
         script_args=args,
-        verbose=args.verbose,
+        verbosity_level=args.verbose,
     )
     main.scrape()
 
 
 if __name__ == "__main__":
-    args = collect_arguments()
-    main = Scraper(
-        script_args=args,
-        verbose=args.verbose,
-    )
-    main.scrape()
+    main()
