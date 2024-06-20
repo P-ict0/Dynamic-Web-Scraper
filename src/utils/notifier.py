@@ -2,8 +2,9 @@ import os
 
 try:
     from win11toast import notify
-except ImportError:  # Linux
+except (ImportError, ModuleNotFoundError):  # Linux
     pass
+
 
 def is_windows() -> bool:
     """
