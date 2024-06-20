@@ -4,7 +4,7 @@ from .helpers import prompt_yes_no
 
 
 class Json:
-    def __init__(self, path: str, logger) -> None:
+    def __init__(self, path: str, use_previous: bool, logger) -> None:
         """
         Initialize the JSON file with the path and logger.
 
@@ -13,6 +13,7 @@ class Json:
         """
 
         self.path = path
+        self.use_previous = use_previous
         self.logger = logger
         self.ensure_json()
 
@@ -49,6 +50,8 @@ class Json:
                 file.seek(0)
                 json.dump(data, file)
                 file.truncate()
+                print(f"Updated results: ")
+                self.print_json()
             else:
                 self.logger.debug("No new results found")
 
@@ -82,17 +85,12 @@ class Json:
         self.logger.debug(f"Ensuring JSON file exists: {self.path}")
         if os.path.exists(self.path):
             self.logger.debug(f"JSON file exists: {self.path}")
-            # Ask user if they want to remove it and create a new one
-            print("Previous search results found:")
-            self.print_json()
-            if prompt_yes_no(
-                f"Do you want to remove it and create a new one?", enter_is_yes=False
-            ):
+            if not self.use_previous:
                 self.logger.debug(f"Removing existing JSON file: {self.path}")
                 os.remove(self.path)
                 self.create_empty_json()
         else:
-            self.logger.debug(f"JSON file doesnt exist.")
+            self.logger.debug(f"JSON file doesnt exist, creating: {self.path}")
             self.create_empty_json()
 
         # Open the file to check and modify content if necessary

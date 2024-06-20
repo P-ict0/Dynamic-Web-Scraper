@@ -87,7 +87,11 @@ class Scraper:
         self.logger.info(f"Starting web scraper iteration {self.iteration}")
 
         # Load the JSON file and the webpage
-        json = Json(path=self.args.json_path, logger=self.logger)
+        json = Json(
+            path=self.args.json_path,
+            use_previous=self.args.use_previous,
+            logger=self.logger,
+        )
 
         if self.first_run:
             print(f"\nStarting scraper at {time.strftime('%H:%M:%S')}...")

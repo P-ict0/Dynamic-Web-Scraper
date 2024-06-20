@@ -1,6 +1,8 @@
 # 😁 Welcome!!
 
 # Contents
+- [😁 Welcome!!](#-welcome)
+- [Contents](#contents)
 - [🌐 AngularJS Dynamic Web Scraper](#-angularjs-dynamic-web-scraper)
 - [💡 Use case examples](#-use-case-examples)
 - [✨ Features](#-features)
@@ -95,6 +97,9 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 
 - `--json_path, -j`: Optional. The file path where the found results will be saved as JSON. Default is a path relative to the script location.
   - Default = `data/results.json`.
+
+- `--use-previous`, `-p`: Optional. Use results from previous runs, if present
+  - Default = `False`.
 
 - `--no-headless`: Optional. Disable headless mode for the webdriver and run maximized
 

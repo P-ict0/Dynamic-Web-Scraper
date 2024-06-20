@@ -50,6 +50,14 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--use_previous",
+        "-p",
+        type="store_true",
+        default=False,
+        help="(Optional) Use results from previous runs, if present",
+    )
+
+    parser.add_argument(
         "--no-headless",
         action="store_true",
         help="(Optional) Don't run the browser in headless mode",
