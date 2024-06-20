@@ -10,31 +10,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install toml
+      - name: Extract version from pyproject.toml
+        id: get_version
+        run: echo "VERSION=$(cat pyproject.toml | grep version | cut -d'"' -f2)" >> $GITHUB_ENV
 
-      - name: Check version and create release
+      - name: Check if tag exists
+        id: check_tag
         run: |
-          import toml
-          with open('pyproject.toml', 'r') as file:
-            data = toml.load(file)
-          new_version = data['tool']['version']['version']
-          echo "New version: $new_version"
-          echo "VERSION=$new_version" >> $GITHUB_ENV
+          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "::set-output name=exists::true"
+          fi
 
       - name: Create Release
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: steps.check_tag.outputs.exists != 'true'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,3 +39,7 @@ jobs:
           release_name: Release ${{ env.VERSION }}
           draft: false
           prerelease: false
+
+      - name: Push Changes
+        if: steps.check_tag.outputs.exists != 'true'
+        run: git push origin --tags
