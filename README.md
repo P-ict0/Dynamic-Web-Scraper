@@ -8,7 +8,6 @@
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)
 - [📲 Usage](#-usage)
-  - [Basic](#basic)
   - [Options](#options)
 - [✏ Manual Installation](#-manual-installation)
 - [❌ Common errors](#-common-errors)
@@ -43,7 +42,7 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 # 📦 Installation
 
-(Go [below](#manual-installation) for manual installation.)
+(Go [below](#-manual-installation) for manual installation.)
 
 Requirements:
 ```bash
@@ -72,17 +71,17 @@ python -m pip install .
 
 # 📲 Usage
 
+For help:
 ```bash
 ajs-scraper --help
 ```
 
-## Basic
-
+General usage:
 ```bash
 ajs-scraper -u "https://www.example.com" -s "search this text"
 ```
 
-Also see [common errors](#common-errors) if you encounter any issues with the browser.
+Also see [common errors](#-common-errors) if you encounter any issues with the browser.
 
 ## Options
 
