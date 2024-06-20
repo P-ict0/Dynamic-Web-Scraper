@@ -11,35 +11,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11' # Specify the Python version.
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.11'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install .
 
-      - name: Extract version from pyproject.toml
-        id: get_version
-        run: echo "VERSION=$(cat pyproject.toml | grep version | cut -d'"' -f2)" >> $GITHUB_ENV
+    - name: Get version
+      id: get_version
+      run: |
+        echo "VERSION=$(cat pyproject.toml | grep 'version = ' | sed 's/version = //g')" >> $GITHUB_ENV
 
-      - name: Check if tag exists
-        id: check_tag
-        run: |
-          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
-            echo "::set-output name=exists::true"
-          fi
-
-      - name: Create Release
-        if: steps.check_tag.outputs.exists != 'true'
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        with:
-          tag_name: ${{ env.VERSION }}
-          release_name: Release ${{ env.VERSION }}
-          draft: false
-          prerelease: false
-
-      - name: Push Changes
-        if: steps.check_tag.outputs.exists != 'true'
-        run: git push origin --tags
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
+        draft: false
+        prerelease: false
+  
