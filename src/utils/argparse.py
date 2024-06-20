@@ -52,7 +52,7 @@ def collect_arguments() -> argparse.Namespace:
 
     parser.add_argument(
         "--no-headless",
-        action="store_true",
+        action="store_false",
         help="Don't run the browser in headless mode",
     )
 

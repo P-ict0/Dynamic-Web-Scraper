@@ -44,8 +44,19 @@ class Scraper:
         self.args = script_args
         self.logger = Logger(name=__name__, verbose=verbose).get_logger()
 
+        # Log the arguments passed to the script
+        self.log_args()
+
         # Initialize the iteration counter
         self.iteration = 1
+
+    def log_args(self) -> None:
+        """
+        Log the arguments passed to the script
+        """
+        self.logger.debug("Program started with the following options:")
+        for arg, value in vars(self.args).items():
+            self.logger.debug(f"{arg}: {value}")
 
     @repeat_every(lambda self: self.args.interval * 60)
     def scrape(self) -> None:
@@ -53,13 +64,13 @@ class Scraper:
         Main function to run the web scraper
         """
 
-        self.logger.info(
-            f"Starting the web scraper (iteration {self.iteration}), running every {self.args.interval} minutes"
-        )
+        self.logger.info(f"Starting web scraper iteration {self.iteration}")
 
         # Load the JSON file and the webpage
         json = Json(path=self.args.json_path, logger=self.logger)
-        browser = Browser(url=self.args.url, headless=True, logger=self.logger)
+        browser = Browser(
+            url=self.args.url, headless=args.no_headless, logger=self.logger
+        )
         page_source = browser.load_page()
 
         # Close the browser after loading the page
@@ -79,7 +90,7 @@ class Scraper:
                     )
 
         self.logger.info(
-            f"Web scraper iteration {self.iteration} finished, next one starting in {self.args.interval} minutes"
+            f"Web scraper iteration {self.iteration} finished, waiting {self.args.interval} minutes..."
         )
 
         self.iteration += 1

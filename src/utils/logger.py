@@ -32,7 +32,7 @@ class Logger:
 
         # Create colored formatter
         formatter = ColoredFormatter(
-            "%(log_color)s%(asctime)s => [%(levelname)s]%(reset)s %(white)s\t%(message)s",
+            "%(log_color)s%(asctime)s => [%(levelname)s]%(reset)s %(white)s%(message)s",
             datefmt="%H:%M:%S",
             reset=True,
             log_colors={
