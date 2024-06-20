@@ -40,7 +40,7 @@ class Json:
             found = []
             for result in results:
                 if result not in data:
-                    self.logger.debug(f"New result found: {result}")
+                    self.logger.info(f"New result found: {result}")
                     data.append(result)
                     found.append(result)
 
