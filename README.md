@@ -4,16 +4,17 @@
 - [Use case examples](#use-case-examples)
 - [Features](#features)
 - [Installation](#installation)
-  - [Requirements](#requirements)
-  - [Setup](#setup)
 - [Usage](#usage)
-  - [Help](#help)
-  - [Basic Usage](#basic-usage)
+  - [Basic](#basic)
   - [Options](#options)
+- [Manual Installation](#manual-installation)
+- [Common errors](#common-errors)
 - [Contributing](#contributing)
 
 
 # AngularJS Dynamic Web Scraper
+
+**Windows and Linux compatible.**
 
 This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
 This can be used to monitor when a new element is added to the website instead of having to manually refresh it.
@@ -39,44 +40,46 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 # Installation
 
-## Requirements
+(Go [below](#manual-installation) for manual installation.)
 
+Requirements:
 ```bash
-git
+git pipx
+```
+`pipx` is optional but recommended, you can use `pip` instead.
+
+`pipx`:
+```bash
+pipx install git+https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
 ```
 
-You also need to install the latest geckodriver from [here](https://github.com/mozilla/geckodriver/releases) and add it to your PATH.
+`pip`:
+```bash
+pipx install git+https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
+```
 
-## Setup
+<hr>
 
+You can also clone the repository and install:
 ```bash
 git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
-```
-
-Recommended to use a virtual environment:
-```bash
-python3 -m venv venv
-
-source venv/bin/activate  # Linux
-venv\Scripts\activate  # Windows
-```
-
-```bash
-pip install -r requirements.txt
+cd AngularJS-Dynamic-Web-Scraper
+python -m pip install .
 ```
 
 # Usage
 
-## Help
 ```bash
-python src/web_scraper.py --help
+ajs-scraper --help
 ```
 
-## Basic Usage
+## Basic
 
 ```bash
-python src/web_scraper.py -u "https://www.example.com" -s "search this text"
+ajs-scraper -u "https://www.example.com" -s "search this text"
 ```
+
+Also see [common errors](#common-errors) if you encounter any issues with the browser.
 
 ## Options
 
@@ -103,6 +106,33 @@ python src/web_scraper.py -u "https://www.example.com" -s "search this text"
 
 _Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._
 
+
+# Manual Installation
+
+```bash
+git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
+```
+
+Recommended to use a virtual environment:
+```bash
+python3 -m venv venv
+
+source venv/bin/activate  # Linux
+venv\Scripts\activate  # Windows
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+You can now run:
+```bash
+python src/web_scraper/scraper.py [args]
+```
+
+# Common errors
+
+You may also need to install the latest geckodriver from [here](https://github.com/mozilla/geckodriver/releases) and add it to your PATH.
 
 # Contributing
 
