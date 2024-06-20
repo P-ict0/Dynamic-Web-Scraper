@@ -108,6 +108,8 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
   - `-vv`: DEBUG
   - Default: WARNING
 
+- `--quiet, -q`: Optional Suppress all notifications, only get output in the console
+
 
 _Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._
 

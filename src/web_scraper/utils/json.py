@@ -42,7 +42,7 @@ class Json:
             found = []
             for result in results:
                 if result not in data:
-                    self.logger.info(f"New result found: {result}")
+                    self.logger.debug(f"(JSON) New result found: {result}")
                     data.append(result)
                     found.append(result)
 
@@ -53,7 +53,7 @@ class Json:
                 print(f"Updated results: ")
                 self.print_json()
             else:
-                self.logger.debug("No new results found")
+                self.logger.debug("(JSON) No new results found")
 
             return found
 
@@ -61,7 +61,7 @@ class Json:
         """
         Create an empty JSON file.
         """
-        self.logger.debug(f"Creating empty JSON file: {self.path}")
+        self.logger.debug(f"(JSON) Creating empty JSON file: {self.path}")
         os.makedirs(os.path.dirname(self.path), exist_ok=True)
         with open(self.path, "w") as file:
             json.dump([], file)
@@ -70,7 +70,7 @@ class Json:
         """
         Print the contents of the JSON file.
         """
-        self.logger.debug(f"Printing JSON file content: {self.path}")
+        self.logger.debug(f"(JSON) Printing JSON file content: {self.path}")
         with open(self.path, "r") as file:
             data = json.load(file)
             pretty_data = json.dumps(data, indent=4)
@@ -82,19 +82,19 @@ class Json:
         """
 
         # Check if file exists and create with an empty list if it does not exist
-        self.logger.debug(f"Ensuring JSON file exists: {self.path}")
+        self.logger.debug(f"(JSON) Ensuring JSON file exists: {self.path}")
         if os.path.exists(self.path):
-            self.logger.debug(f"JSON file exists: {self.path}")
+            self.logger.debug(f"(JSON) JSON file exists: {self.path}")
             if not self.use_previous:
-                self.logger.debug(f"Removing existing JSON file: {self.path}")
+                self.logger.debug(f"(JSON) Removing existing JSON file: {self.path}")
                 os.remove(self.path)
                 self.create_empty_json()
         else:
-            self.logger.debug(f"JSON file doesnt exist, creating: {self.path}")
+            self.logger.debug(f"(JSON) JSON file doesnt exist, creating: {self.path}")
             self.create_empty_json()
 
         # Open the file to check and modify content if necessary
-        self.logger.debug(f"Checking JSON file content: {self.path}")
+        self.logger.debug(f"(JSON) Checking JSON file content: {self.path}")
         with open(self.path, "r+") as file:
             try:
                 data = json.load(file)
@@ -107,18 +107,18 @@ class Json:
                 # If data is not a list, log an error and initialize to an empty list
                 elif not isinstance(data, list):
                     self.logger.warning(
-                        "JSON file content is not a list, initializing to an empty list"
+                        "(JSON) JSON file content is not a list, initializing to an empty list"
                     )
                     data = []
             except json.JSONDecodeError:
                 self.logger.error(
-                    "JSON file is corrupted, initializing to an empty list"
+                    "(JSON) JSON file is corrupted, initializing to an empty list"
                 )
                 # If the file is empty or corrupted, initialize to an empty list
                 data = []
 
             # Rewrite the file with the correct list data
-            self.logger.debug(f"Rewriting JSON file content: {self.path}")
+            self.logger.debug(f"(JSON) Rewriting JSON file content: {self.path}")
             file.seek(0)
             json.dump(data, file)
             file.truncate()

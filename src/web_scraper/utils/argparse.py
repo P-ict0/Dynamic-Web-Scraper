@@ -72,5 +72,13 @@ def collect_arguments() -> argparse.Namespace:
         help="(Optional) Specific path to save the found results as JSON.",
     )
 
+    parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        default=False,
+        help="(Optional) Suppress all notifications, only get output in the console",
+    )
+
     args = parser.parse_args()
     return args

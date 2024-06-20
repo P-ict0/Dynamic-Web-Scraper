@@ -114,9 +114,12 @@ class Scraper:
             found = json.new_results(results)
             if found:
                 for item in found:
-                    notify_user(
-                        f"New result {item}!,\nClick to open url", self.args.url
-                    )
+                    if not self.args.quiet:
+                        notify_user(
+                            f"New result {item}!,\nClick to open url", self.args.url
+                        )
+                    else:
+                        print(f"New result found: {item}")
 
         self.logger.info(
             f"Web scraper iteration {self.iteration} finished, waiting {self.args.interval} minutes..."
