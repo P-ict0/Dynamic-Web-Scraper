@@ -51,11 +51,19 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--no-headless",
+        action="store_true",
+        help="Don't run the browser in headless mode",
+    )
+
+    parser.add_argument(
         "--json_path",
         "-j",
         required=False,
         type=str,
-        default=pathlib.Path(__file__).parent.parent.parent.resolve() / "data" / "results.json",
+        default=pathlib.Path(__file__).parent.parent.parent.resolve()
+        / "data"
+        / "results.json",
         help="Path to save the found results as JSON",
     )
 
