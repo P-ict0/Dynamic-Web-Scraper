@@ -69,7 +69,7 @@ class Scraper:
         # Load the JSON file and the webpage
         json = Json(path=self.args.json_path, logger=self.logger)
         browser = Browser(
-            url=self.args.url, headless=args.no_headless, logger=self.logger
+            url=self.args.url, no_headless=args.no_headless, logger=self.logger
         )
         page_source = browser.load_page()
 

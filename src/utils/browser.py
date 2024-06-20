@@ -9,17 +9,17 @@ class Browser:
     Class to handle the browser
     """
 
-    def __init__(self, url: str, logger, headless: bool = True) -> None:
+    def __init__(self, url: str, logger, no_headless: bool = True) -> None:
         """
         Initialize the browser with the URL
 
         :param url: URL to load in the browser
         :param logger: Logger object
-        :param headless: Run the browser in headless
+        :param no_headless: Run the browser in headless
         """
 
         self.url = url
-        self.headless = headless
+        self.no_headless = no_headless
         self.logger = logger
         self.browser = self.init_browser()
 
@@ -30,12 +30,12 @@ class Browser:
 
         self.logger.debug("Browser: Initializing the browser")
         options = webdriver.FirefoxOptions()
-        if self.headless:
-            self.logger.debug("Browser: Running in headless mode")
-            options.add_argument("--headless")
-        else:
+        if self.no_headless:
             self.logger.debug("Browser: Running in normal mode")
             options.add_argument("--start-maximized")
+        else:
+            self.logger.debug("Browser: Running in headless mode")
+            options.add_argument("--headless")
 
         browser = webdriver.Firefox(options=options)
 
