@@ -7,8 +7,8 @@
   - [Requirements](#requirements)
   - [Setup](#setup)
 - [Usage](#usage)
-  - [Help:](#help)
-  - [Basic Usage:](#basic-usage)
+  - [Help](#help)
+  - [Basic Usage](#basic-usage)
   - [Options](#options)
 - [Contributing](#contributing)
 
@@ -67,12 +67,12 @@ pip install -r requirements.txt
 
 # Usage
 
-## Help:
+## Help
 ```bash
 python src/web_scraper.py --help
 ```
 
-## Basic Usage:
+## Basic Usage
 
 ```bash
 python scraper.py -u "https://www.example.com" -s "search this text"
