@@ -1,3 +1,14 @@
+- [AngularJS Dynamic Web Scraper](#angularjs-dynamic-web-scraper)
+- [Use case examples](#use-case-examples)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Help:](#help)
+  - [Basic Usage:](#basic-usage)
+  - [Options](#options)
+- [Contributing](#contributing)
+
+
 # AngularJS Dynamic Web Scraper
 
 This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
