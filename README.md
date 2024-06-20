@@ -44,20 +44,24 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 (Go [below](#-manual-installation) for manual installation.)
 
+From [PyPI](https://pypi.org/project/ajs-scraper/)
+
 Requirements:
 ```bash
-git pipx
+pip
+# or recommended
+pipx
 ```
 `pipx` is optional but recommended, you can use `pip` instead.
 
 `pipx`:
 ```bash
-pipx install git+https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
+pipx install ajs-scraper
 ```
 
 `pip`:
 ```bash
-pipx install git+https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
+pipx install ajs-scraper
 ```
 
 <hr>
