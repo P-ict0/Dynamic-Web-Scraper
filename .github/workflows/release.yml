@@ -30,7 +30,7 @@ jobs:
     - name: Get latest commit messages
       id: get_commits
       run: |
-        echo "COMMITS=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:'%h - %s (%an)')" >> $GITHUB_ENV
+        echo "COMMITS=$(git log --pretty=format:'%h - %s (%an)' $(git describe --tags --abbrev=0 @^)..@)" >> $GITHUB_ENV
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
