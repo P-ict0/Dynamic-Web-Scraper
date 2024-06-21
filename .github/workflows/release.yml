@@ -27,13 +27,6 @@ jobs:
       run: |
         echo "VERSION=v$(cat pyproject.toml | grep 'version = ' | sed 's/version = //g' | sed 's/"//g')" >> $GITHUB_ENV
 
-    - name: Get latest commit messages
-      id: get_commits
-      run: |
-        echo "COMMITS=$(git log --pretty=format:'%h - %s (%an)' $(git describe --tags --abbrev=0 @^)..@)" >> $GITHUB_ENV
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -42,10 +35,5 @@ jobs:
       with:
         tag_name: ${{ env.VERSION }}
         release_name: Release ${{ env.VERSION }}
-        body: |
-          ### Description
-          This release includes the following changes:
-          ${{ env.COMMITS }}
         draft: false
         prerelease: false
-  
