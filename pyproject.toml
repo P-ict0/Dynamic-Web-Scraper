@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dynamic-scraper"
-version = "1.0.3"
+version = "1.0.4"
 description = "Dynamic web scraper specifically designed for websites that dynamically load elements (such as AngularJS). It runs at specified time intervals and notifies you about specific updates on the site."
 readme = "README.md"
 requires-python = ">=3.10"
