@@ -3,22 +3,24 @@
 # Contents
 - [😁 Welcome!!](#-welcome)
 - [Contents](#contents)
-- [🌐 AngularJS Dynamic Web Scraper](#-angularjs-dynamic-web-scraper)
+- [🌐 Dynamic Web Scraper](#-dynamic-web-scraper)
 - [💡 Use case examples](#-use-case-examples)
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)
 - [📲 Usage](#-usage)
   - [Options](#options)
+  - [Advanced Options](#advanced-options)
 - [✏ Manual Installation](#-manual-installation)
 - [❌ Common errors](#-common-errors)
 - [👥 Contributing](#-contributing)
 
 
-# 🌐 AngularJS Dynamic Web Scraper
+# 🌐 Dynamic Web Scraper
 
 💻 **Windows and Linux compatible.** 💻
 
-This is a dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals.
+This is a dynamic web scraper specifically designed for websites that have to wait for certain elements to load (such as AngularJS).
+It runs at specified time intervals.
 This can be used to monitor when a new element is added to the website instead of having to manually refresh it.
 
 Instead of looking at the source, it waits until all elements are loaded to retrieve the results by using selenium and a Firefox driver.
@@ -56,20 +58,20 @@ pipx
 
 `pipx`:
 ```bash
-pipx install ajs-scraper
+pipx install dynamic-scraper
 ```
 
 `pip`:
 ```bash
-pipx install ajs-scraper
+pipx install dynamic-scraper
 ```
 
 <hr>
 
 You can also clone the repository and install:
 ```bash
-git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
-cd AngularJS-Dynamic-Web-Scraper
+git clone https://github.com/P-ict0/Dynamic-Web-Scraper.git
+cd Dynamic-Web-Scraper
 python -m pip install .
 ```
 
@@ -77,12 +79,12 @@ python -m pip install .
 
 For help:
 ```bash
-ajs-scraper --help
+dynamic-scraper --help
 ```
 
 General usage:
 ```bash
-ajs-scraper -u "https://www.example.com" -s "search this text"
+dynamic-scraper -u "https://www.example.com" -s "search this text"
 ```
 
 Also see [common errors](#-common-errors) if you encounter any issues with the browser.
@@ -113,6 +115,15 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
   - Default: WARNING
 
 - `--quiet, -q`: Optional Suppress all notifications, only get output in the console
+
+## Advanced Options
+
+- `--locator-type`, `-t`: Optional.  Type of locator to wait for the element to load.
+  - Default = `xpath`.
+  - Options: `xpath`, `id`, `class_name`, `name`, `tag_name`, `link_text`, `partial_link_text`, `css_selector`.
+
+- `--locator-value`, `-l`: Optional. Value of the locator to search for.
+  - Default = `//section[@class='list-item ng-scope']`.
 
 
 _Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._

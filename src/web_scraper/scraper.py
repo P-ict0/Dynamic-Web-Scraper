@@ -98,7 +98,11 @@ class Scraper:
             self.first_run = False
 
         browser = Browser(
-            url=self.args.url, no_headless=self.args.no_headless, logger=self.logger
+            url=self.args.url,
+            no_headless=self.args.no_headless,
+            logger=self.logger,
+            locator_type=self.args.locator_type,
+            locator_value=self.args.locator_value,
         )
         page_source = browser.load_page()
 

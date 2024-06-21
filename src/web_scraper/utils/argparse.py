@@ -1,6 +1,6 @@
 import argparse
 import pathlib
-import os
+import utils.config as config
 
 
 def collect_arguments() -> argparse.Namespace:
@@ -35,6 +35,23 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
+        "--locator-type",
+        "-t",
+        type=str,
+        choices=config.locator_map.keys(),
+        help="(Optional) Type of locator to wait for the element to load. (Default: xpath)",
+        default="xpath",
+    )
+
+    parser.add_argument(
+        "--locator-value",
+        "-l",
+        type=str,
+        default="//section[@class='list-item ng-scope']",
+        help="(Optional) Value of the locator to search for. (Default: //section[@class='list-item ng-scope'])",
+    )
+
+    parser.add_argument(
         "--regex",
         "-r",
         type=str,
@@ -50,7 +67,7 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "--use_previous",
+        "--use-previous",
         "-p",
         type="store_true",
         default=False,
