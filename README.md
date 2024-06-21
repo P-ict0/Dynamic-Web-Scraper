@@ -96,9 +96,9 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 | `--interval`      | `-i`       | Optional    | `5`                                    | The interval in minutes at which the script should run repeatedly.                               |
 | `--json_path`     | `-j`       | Optional    | Windows: `%APPDATA%/Roaming/Dynamic-Scraper/results.json`<br>Linux: `$HOME/.dynamic_scraper_results.json` | The file path where the found results will be saved as JSON.|
 | `--use-previous`  | `-p`       | Optional    | `False`                                | Use results from previous runs, if present.                                                      |
-| `--no-headless`   | None       | Optional    | None                                   | Disable headless mode for the webdriver and run maximized.                                       |
-| `--verbose`       | `-v`       | Optional    | `WARNING`                              | Increase verbosity level (`-v`, `-vv`, etc.). INFO for `-v`, DEBUG for `-vv`.                    |
-| `--quiet`         | `-q`       | Optional    | None                                   | Suppress all notifications, only get output in the console.                                      |
+| `--no-headless`   | None       | Optional    | `False`                                | Disable headless mode for the webdriver and run maximized.                                       |
+| `--verbose`       | `-v`       | Optional    | None (thresshold: `WARNING`)           | Increase verbosity level (`-v`, `-vv`, etc.). INFO for `-v`, DEBUG for `-vv`.                    |
+| `--quiet`         | `-q`       | Optional    | `False`                                | Suppress all notifications, only get output in the console.                                      |
 | `--locator-type`  | `-t`       | Optional    | `xpath`                                | Type of locator to wait for the element to load. Options include various HTML attribute types.   |
 | `--locator-value` | `-l`       | Optional    | `//section[@class='list-item ng-scope']` | Value of the locator to search for.                                                              |
 
