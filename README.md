@@ -48,7 +48,7 @@ From [PyPI](https://pypi.org/project/dynamic-scraper/)
 Requirements:
 ```bash
 pip
-# or recommended
+# or
 pipx
 ```
 `pipx` is optional but recommended, you can use `pip` instead.
@@ -60,7 +60,7 @@ pipx install dynamic-scraper
 
 `pip`:
 ```bash
-pipx install dynamic-scraper
+pip install dynamic-scraper
 ```
 
 <hr>
