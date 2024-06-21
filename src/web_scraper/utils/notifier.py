@@ -1,4 +1,5 @@
 from .helpers import is_windows
+import os
 
 try:
     from win11toast import notify
