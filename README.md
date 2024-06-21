@@ -93,7 +93,7 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 | Option            | Short Form | Requirement | Default                                | Description                                                                                      |
 |-------------------|------------|-------------|----------------------------------------|--------------------------------------------------------------------------------------------------|
 | `--url`           | `-u`       | Required    | None                                   | The URL of the webpage from which to fetch data.                                                 |
-| `--search_string` | `-s`       | Required    | None                                   | The string you want to search for within the webpage.                                            |
+| `--search-string` | `-s`       | Required    | None                                   | The string you want to search for within the webpage.                                            |
 | `--regex`         | `-r`       | Optional    | `search_string`                        | The regular expression pattern used to store the results nicely.                                 |
 | `--interval`      | `-i`       | Optional    | `5`                                    | The interval in minutes at which the script should run repeatedly.                               |
 | `--json_path`     | `-j`       | Optional    | `data/results.json`                    | The file path where the found results will be saved as JSON.                                     |

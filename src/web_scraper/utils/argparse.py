@@ -28,7 +28,7 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "--search_string",
+        "--search-string",
         "-s",
         required=True,
         type=str,
