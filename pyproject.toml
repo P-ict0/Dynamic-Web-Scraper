@@ -3,11 +3,11 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ajs-scraper"
+name = "dynamic-scraper"
 version = "0.2.1"
 description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = "3.x"
 authors = [
     { name = "Rodrigo Martin Núñez", email = "rodrigomartinnunez@gmail.com" }
 ]
@@ -40,7 +40,7 @@ dependencies = [
 "Bug Reports" = "https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper/issues"
 
 [project.scripts]
-ajs-scraper = "src.web_scraper:main"
+dynamic-scraper = "src.web_scraper:main"
 
 [tool.setuptools]
 packages = ["src.web_scraper", "src.web_scraper.utils"]
