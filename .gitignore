@@ -37,4 +37,4 @@ env.bak/
 venv.bak/
 
 # Data
-data/
+**/*.json
