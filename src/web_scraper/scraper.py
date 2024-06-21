@@ -34,9 +34,6 @@ def repeat_every(get_interval):
                 except KeyboardInterrupt:
                     print("\nExiting web scraper...")
                     print(f"Ran {args[0].iteration} iterations")
-                    print(
-                        f"Time elapsed: {time.strftime('%H hours, %M minutes and %S seconds', time.gmtime(time.time() - start_time))}"
-                    )
                     sys.exit()
 
         return wrapper
@@ -133,8 +130,9 @@ class Scraper:
 
 
 def run():
-    print("Initializing web scraper...")
+    print(f"Initializing web scraper at {time.strftime('%H:%M:%S')}...")
     args = collect_arguments()
+    print(f"Running every {args.interval} minutes")
     main = Scraper(
         script_args=args,
         verbosity_level=args.verbose,
