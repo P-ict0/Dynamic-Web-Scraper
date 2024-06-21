@@ -1,18 +1,9 @@
-import os
+from .helpers import is_windows
 
 try:
     from win11toast import notify
 except (ImportError, ModuleNotFoundError):  # Linux
     pass
-
-
-def is_windows() -> bool:
-    """
-    Check the OS and send the notification
-
-    :return: True if the OS is Windows, False otherwise
-    """
-    return True if os.name == "nt" else False
 
 
 def notify_user(message: str, url: str) -> None:

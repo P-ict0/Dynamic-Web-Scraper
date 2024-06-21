@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dynamic-scraper"
-version = "0.4.0"
-description = "Dynamic web scraper specifically designed for AnsularJS websites that runs at specified time intervals and notifies you about specific updates on the site"
+version = "1.0.0"
+description = "Dynamic web scraper specifically designed for websites that dynamically load elements (such as AngularJS). It runs at specified time intervals and notifies you about specific updates on the site."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
@@ -44,5 +44,3 @@ dynamic-scraper = "src.web_scraper:main"
 
 [tool.setuptools]
 packages = ["src.web_scraper", "src.web_scraper.utils"]
-include-package-data = true
-package-data = {"web_scraper" = ["results.json"]}  # Include results.json in the package

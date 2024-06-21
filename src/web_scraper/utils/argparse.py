@@ -1,6 +1,7 @@
 import argparse
-import pathlib
 import utils.config as config
+from .helpers import is_windows
+import os
 
 
 def collect_arguments() -> argparse.Namespace:
@@ -79,12 +80,28 @@ def collect_arguments() -> argparse.Namespace:
         help="(Optional) Don't run the browser in headless mode",
     )
 
+    # Determine the operating system
+    if is_windows():
+        # Windows-specific default path
+        default_path_directory = os.path.join(os.environ["APPDATA"], "Dynamic-Scraper")
+        os.makedirs(os.path.dirname(default_path_directory), exist_ok=True)
+
+        # Create a default path for Windows
+        default_path = os.path.join(
+            os.environ["APPDATA"], "Dynamic-Scraper", "results.json"
+        )
+    else:
+        # Default path for Linux (and other Unix-like OS)
+        default_path = os.path.join(
+            os.path.expanduser("~"), ".dynamic_scraper_results.json"
+        )
+
     parser.add_argument(
         "--json_path",
         "-j",
         required=False,
         type=str,
-        default=pathlib.Path(__file__).parent.parent.resolve() / "results.json",
+        default=default_path,
         help="(Optional) Specific path to save the found results as JSON.",
     )
 
