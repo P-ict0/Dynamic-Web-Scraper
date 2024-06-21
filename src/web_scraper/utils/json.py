@@ -1,6 +1,5 @@
 import json
 import os
-from .helpers import prompt_yes_no
 
 
 class Json:
