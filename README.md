@@ -6,7 +6,7 @@
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)
 - [📲 Usage](#-usage)
-- [🛠️ Options](#-options)
+- [🛠️ Options](#%EF%B8%8F-options)
 - [✏ Manual Installation](#-manual-installation)
 - [❌ Common errors](#-common-errors)
 - [👥 Contributing](#-contributing)
