@@ -9,7 +9,6 @@
 - [📦 Installation](#-installation)
 - [📲 Usage](#-usage)
   - [Options](#options)
-  - [Advanced Options](#advanced-options)
 - [✏ Manual Installation](#-manual-installation)
 - [❌ Common errors](#-common-errors)
 - [👥 Contributing](#-contributing)
@@ -91,42 +90,19 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 
 ## Options
 
-- `--url, -u`: Required. The URL of the webpage from which to fetch data.
-
-- `--search_string, -s`: Required. The string you want to search for within the webpage.
-
-- `--regex, -r`: Optional. The regular expression pattern used to store the results nicely.
-  - Default = `search_string`.
-
-- `--interval, -i`: Optional. The interval in minutes at which the script should run repeatedly.
-  - Default = `5`.
-
-- `--json_path, -j`: Optional. The file path where the found results will be saved as JSON. Default is a path relative to the script location.
-  - Default = `data/results.json`.
-
-- `--use-previous`, `-p`: Optional. Use results from previous runs, if present
-  - Default = `False`.
-
-- `--no-headless`: Optional. Disable headless mode for the webdriver and run maximized
-
-- `--verbose, -v`: Optional. Increase verbosity level (`-v`, `-vv`, etc.)
-  - `-v`: INFO
-  - `-vv`: DEBUG
-  - Default: WARNING
-
-- `--quiet, -q`: Optional Suppress all notifications, only get output in the console
-
-## Advanced Options
-
-- `--locator-type`, `-t`: Optional.  Type of locator to wait for the element to load.
-  - Default = `xpath`.
-  - Options: `xpath`, `id`, `class_name`, `name`, `tag_name`, `link_text`, `partial_link_text`, `css_selector`.
-
-- `--locator-value`, `-l`: Optional. Value of the locator to search for.
-  - Default = `//section[@class='list-item ng-scope']`.
-
-
-_Note: The results will be appended to the specified JSON file, creating a historical data log if run repeatedly._
+| Option            | Short Form | Requirement | Default                                | Description                                                                                      |
+|-------------------|------------|-------------|----------------------------------------|--------------------------------------------------------------------------------------------------|
+| `--url`           | `-u`       | Required    | None                                   | The URL of the webpage from which to fetch data.                                                 |
+| `--search_string` | `-s`       | Required    | None                                   | The string you want to search for within the webpage.                                            |
+| `--regex`         | `-r`       | Optional    | `search_string`                        | The regular expression pattern used to store the results nicely.                                 |
+| `--interval`      | `-i`       | Optional    | `5`                                    | The interval in minutes at which the script should run repeatedly.                               |
+| `--json_path`     | `-j`       | Optional    | `data/results.json`                    | The file path where the found results will be saved as JSON.                                     |
+| `--use-previous`  | `-p`       | Optional    | `False`                                | Use results from previous runs, if present.                                                      |
+| `--no-headless`   | None       | Optional    | None                                   | Disable headless mode for the webdriver and run maximized.                                       |
+| `--verbose`       | `-v`       | Optional    | `WARNING`                              | Increase verbosity level (`-v`, `-vv`, etc.). INFO for `-v`, DEBUG for `-vv`.                    |
+| `--quiet`         | `-q`       | Optional    | None                                   | Suppress all notifications, only get output in the console.                                      |
+| `--locator-type`  | `-t`       | Optional    | `xpath`                                | Type of locator to wait for the element to load. Options include various HTML attribute types.   |
+| `--locator-value` | `-l`       | Optional    | `//section[@class='list-item ng-scope']` | Value of the locator to search for.                                                              |
 
 
 # ✏ Manual Installation
