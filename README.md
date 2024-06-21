@@ -45,7 +45,7 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 (Go [below](#-manual-installation) for manual installation.)
 
-From [PyPI](https://pypi.org/project/ajs-scraper/)
+From [PyPI](https://pypi.org/project/dynamic-scraper/)
 
 Requirements:
 ```bash
