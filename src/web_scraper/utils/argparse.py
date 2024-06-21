@@ -69,8 +69,7 @@ def collect_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--use-previous",
         "-p",
-        type="store_true",
-        default=False,
+        action="store_true",
         help="(Optional) Use results from previous runs, if present",
     )
 
