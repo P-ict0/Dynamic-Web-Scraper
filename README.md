@@ -1,12 +1,15 @@
 # 😁 Welcome!!
 
 # Contents
+- [😁 Welcome!!](#-welcome)
+- [Contents](#contents)
 - [🌐 Dynamic Web Scraper](#-dynamic-web-scraper)
+- [🚀 Quick start](#-quick-start)
 - [💡 Use case examples](#-use-case-examples)
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)
 - [📲 Usage](#-usage)
-- [🛠️ Options](#%EF%B8%8F-options)
+- [⚙ Options](#-options)
 - [✏ Manual Installation](#-manual-installation)
 - [❌ Common errors](#-common-errors)
 - [👥 Contributing](#-contributing)
@@ -23,6 +26,13 @@ This can be used to monitor when a new element is added to the website instead o
 Instead of looking at the source, it waits until all elements are loaded to retrieve the results by using selenium and a Firefox driver.
 
 Whenever a new element is discovered, it will notify you and save it to a file so that it doesn't notify you again for that same element in the future.
+
+# 🚀 Quick start
+
+```bash
+pipx install dynamic-scraper
+dynamic-scraper -u "https://www.example.com" -s "search this text"
+```
 
 # 💡 Use case examples
 This is useful, for example to notify you when a certain keyword is found on a website, such as:
@@ -45,12 +55,6 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 From [PyPI](https://pypi.org/project/dynamic-scraper/)
 
-Requirements:
-```bash
-pip
-# or
-pipx
-```
 `pipx` is optional but recommended, you can use `pip` instead.
 
 `pipx`:
@@ -69,7 +73,7 @@ You can also clone the repository and install:
 ```bash
 git clone https://github.com/P-ict0/Dynamic-Web-Scraper.git
 cd Dynamic-Web-Scraper
-python -m pip install .
+pipx install .
 ```
 
 # 📲 Usage
@@ -86,7 +90,7 @@ dynamic-scraper -u "https://www.example.com" -s "search this text"
 
 Also see [common errors](#-common-errors) if you encounter any issues with the browser.
 
-# 🛠️ Options
+# ⚙ Options
 
 | Option            | Short Form | Requirement | Default                                | Description                                                                                      |
 |-------------------|------------|-------------|----------------------------------------|--------------------------------------------------------------------------------------------------|
