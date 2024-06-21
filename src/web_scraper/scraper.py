@@ -130,7 +130,7 @@ class Scraper:
 
 
 def run():
-    print(f"Initializing web scraper at {time.strftime('%H:%M:%S')}...")
+    print(f"Initializing web scraper...")
     args = collect_arguments()
     print(f"Running every {args.interval} minutes")
     main = Scraper(
