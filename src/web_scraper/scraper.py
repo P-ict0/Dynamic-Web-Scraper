@@ -62,7 +62,7 @@ class Scraper:
         self.log_args()
 
         # Initialize the iteration counter
-        self.iteration = 1
+        self.iteration = 0
 
         # Check if first run
         self.first_run = True
@@ -80,6 +80,7 @@ class Scraper:
         """
         Main function to run the web scraper
         """
+        self.iteration += 1
 
         self.logger.info(f"Starting web scraper iteration {self.iteration}")
 
@@ -126,12 +127,10 @@ class Scraper:
             f"Web scraper iteration {self.iteration} finished, waiting {self.args.interval} minutes..."
         )
 
-        self.iteration += 1
-
 
 def run():
-    print(f"Initializing web scraper...")
     args = collect_arguments()
+    print(f"Initializing web scraper...")
     print(f"Running every {args.interval} minutes")
     main = Scraper(
         script_args=args,

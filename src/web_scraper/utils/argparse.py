@@ -2,6 +2,7 @@ import argparse
 import utils.config as config
 from .helpers import is_windows
 import os
+from importlib.metadata import version
 
 
 def collect_arguments() -> argparse.Namespace:
@@ -20,19 +21,19 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "-v",
-        "--verbose",
-        action="count",
-        default=0,
-        help="(Optional) Increase verbosity level (-v, -vv, -vvv, etc.)",
-    )
-
-    parser.add_argument(
         "--search-string",
         "-s",
         required=True,
         type=str,
         help="String to search for in the webpage",
+    )
+
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="count",
+        default=0,
+        help="(Optional) Increase verbosity level (-v, -vv, -vvv, etc.)",
     )
 
     parser.add_argument(
@@ -111,6 +112,14 @@ def collect_arguments() -> argparse.Namespace:
         action="store_true",
         default=False,
         help="(Optional) Suppress all notifications, only get output in the console",
+    )
+
+    parser.add_argument(
+        "--version",
+        "-V",
+        help="Get program version",
+        action="version",
+        version=version("dynamic-scraper"),
     )
 
     args = parser.parse_args()

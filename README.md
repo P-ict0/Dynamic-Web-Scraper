@@ -96,6 +96,7 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 |-------------------|------------|-------------|----------------------------------------|--------------------------------------------------------------------------------------------------|
 | `--url`           | `-u`       | Required    | None                                   | The URL of the webpage from which to fetch data.                                                 |
 | `--search-string` | `-s`       | Required    | None                                   | The string you want to search for within the webpage.                                            |
+| `--version` | `-V`       | Optional    | None | Get current version                                                              |
 | `--regex`         | `-r`       | Optional    | `search_string`                        | The regular expression pattern used to store the results nicely.                                 |
 | `--interval`      | `-i`       | Optional    | `5`                                    | The interval in minutes at which the script should run repeatedly.                               |
 | `--json_path`     | `-j`       | Optional    | Windows: `%APPDATA%/Roaming/Dynamic-Scraper/results.json`<br>Linux: `$HOME/.dynamic_scraper_results.json` | The file path where the found results will be saved as JSON.|
