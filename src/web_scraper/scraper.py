@@ -53,7 +53,6 @@ class Scraper:
         script_args: Namespace,
         logger: Logger,
         json: Json,
-        browser: Browser,
         parser: Parser,
     ) -> None:
         """
@@ -62,14 +61,12 @@ class Scraper:
         :param script_args: Arguments passed to the script
         :param logger: Logger object to log messages
         :param json: Json class object to save and load results
-        :param browser: Browser object to load the webpage
         :param parser: Parser object to parse the webpage
         """
         self.args = script_args
         self.logger = logger
 
         self.json = json
-        self.browser = browser
         self.parser = parser
 
         # Log the arguments passed to the script
@@ -102,10 +99,19 @@ class Scraper:
             print(f"\nStarting scraper at {time.strftime('%H:%M:%S')}...")
             self.first_run = False
 
-        page_source = self.browser.load_page()
+        self.logger.info(f"Starting browser {self.args.url}...")
+        browser = Browser(
+            url=self.args.url,
+            no_headless=self.args.no_headless,
+            logger=self.logger,
+            locator_type=self.args.locator_type,
+            locator_value=self.args.locator_value,
+        )
+
+        page_source = browser.load_page()
 
         # Close the browser after loading the page
-        self.browser.close_browser()
+        browser.close_browser()
 
         # Parse the page and check for new results
         results = self.parser.parse_page(page_source)
@@ -142,16 +148,6 @@ def run():
         logger=logger,
     )
 
-    # Load the browser
-    logger.info(f"(INIT) Loading browser for {args.url}...")
-    browser = Browser(
-        url=args.url,
-        no_headless=args.no_headless,
-        logger=logger,
-        locator_type=args.locator_type,
-        locator_value=args.locator_value,
-    )
-
     # Load the parser
     logger.info(
         f"(INIT) Loading parser with search string {args.search_string} and regex {args.regex}"
@@ -163,7 +159,6 @@ def run():
         script_args=args,
         logger=logger,
         json=json,
-        browser=browser,
         parser=parser,
     )
     main.scrape()
