@@ -88,6 +88,10 @@ class Json:
                 self.logger.debug(f"(JSON) Removing existing JSON file: {self.path}")
                 os.remove(self.path)
                 self.create_empty_json()
+                self.use_previous = True
+                self.logger.debug(
+                    f"(JSON) Set project to use the new JSON file: {self.path}"
+                )
         else:
             self.logger.debug(f"(JSON) JSON file doesnt exist, creating: {self.path}")
             self.create_empty_json()
