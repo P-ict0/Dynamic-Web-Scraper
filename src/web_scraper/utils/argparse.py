@@ -30,7 +30,6 @@ def collect_arguments() -> argparse.Namespace:
 
     parser.add_argument(
         "-v",
-        "--verbose",
         action="count",
         default=0,
         help="(Optional) Increase verbosity level (-v, -vv, -vvv, etc.)",

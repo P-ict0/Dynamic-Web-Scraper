@@ -15,6 +15,8 @@ from utils.notifier import notify_user
 from utils.parser import Parser
 from utils.json import Json
 from utils.logger import Logger
+from argparse import Namespace
+from importlib.metadata import version
 
 
 # Run the script every [interval] minutes
@@ -46,17 +48,29 @@ class Scraper:
     Function to run the web scraper every x minutes and check for new results in the page
     """
 
-    def __init__(self, script_args, verbosity_level: int) -> None:
+    def __init__(
+        self,
+        script_args: Namespace,
+        logger: Logger,
+        json: Json,
+        browser: Browser,
+        parser: Parser,
+    ) -> None:
         """
         Initialize the web scraper with the arguments passed to the script
 
         :param script_args: Arguments passed to the script
-        :param verbosity_level: Verbosity level for the logger
+        :param logger: Logger object to log messages
+        :param json: Json class object to save and load results
+        :param browser: Browser object to load the webpage
+        :param parser: Parser object to parse the webpage
         """
         self.args = script_args
-        self.logger = Logger(
-            name=__name__, verbosity_level=verbosity_level
-        ).get_logger()
+        self.logger = logger
+
+        self.json = json
+        self.browser = browser
+        self.parser = parser
 
         # Log the arguments passed to the script
         self.log_args()
@@ -78,42 +92,27 @@ class Scraper:
     @repeat_every(lambda self: self.args.interval * 60)
     def scrape(self) -> None:
         """
-        Main function to run the web scraper
+        Main function to run the web scraper every x minutes and check for new results in the page
         """
         self.iteration += 1
 
         self.logger.info(f"Starting web scraper iteration {self.iteration}")
 
-        # Load the JSON file and the webpage
-        json = Json(
-            path=self.args.json_path,
-            use_previous=self.args.use_previous,
-            logger=self.logger,
-        )
-
         if self.first_run:
             print(f"\nStarting scraper at {time.strftime('%H:%M:%S')}...")
             self.first_run = False
 
-        browser = Browser(
-            url=self.args.url,
-            no_headless=self.args.no_headless,
-            logger=self.logger,
-            locator_type=self.args.locator_type,
-            locator_value=self.args.locator_value,
-        )
-        page_source = browser.load_page()
+        page_source = self.browser.load_page()
 
         # Close the browser after loading the page
-        browser.close_browser()
+        self.browser.close_browser()
 
         # Parse the page and check for new results
-        parser = Parser(self.args.search_string, self.args.regex, logger=self.logger)
-        results = parser.parse_page(page_source)
+        results = self.parser.parse_page(page_source)
 
         # Save new results to the JSON file and notify the user
         if results:
-            found = json.new_results(results)
+            found = self.json.new_results(results)
             if found:
                 for item in found:
                     if not self.args.quiet:
@@ -130,11 +129,42 @@ class Scraper:
 
 def run():
     args = collect_arguments()
-    print(f"Initializing web scraper...")
+    logger = Logger(name=__name__, verbosity_level=args.verbose).get_logger()
+    program_version = version("dynamic-scraper")
+
+    print(f"Initializing web scraper version {program_version}...")
+
+    # Load the JSON file
+    logger.info(f"(INIT) Loading JSON file from {args.json_path}")
+    json = Json(
+        path=args.json_path,
+        use_previous=args.use_previous,
+        logger=logger,
+    )
+
+    # Load the browser
+    logger.info(f"(INIT) Loading browser for {args.url}...")
+    browser = Browser(
+        url=args.url,
+        no_headless=args.no_headless,
+        logger=logger,
+        locator_type=args.locator_type,
+        locator_value=args.locator_value,
+    )
+
+    # Load the parser
+    logger.info(
+        f"(INIT) Loading parser with search string {args.search_string} and regex {args.regex}"
+    )
+    parser = Parser(args.search_string, args.regex, logger=logger)
+
     print(f"Running every {args.interval} minutes")
     main = Scraper(
         script_args=args,
-        verbosity_level=args.verbose,
+        logger=logger,
+        json=json,
+        browser=browser,
+        parser=parser,
     )
     main.scrape()
 
