@@ -123,4 +123,17 @@ def collect_arguments() -> argparse.Namespace:
     )
 
     args = parser.parse_args()
+    args = check_arguments(args)
+    return args
+
+
+def check_arguments(args: argparse.Namespace) -> None:
+    """
+    Check the arguments passed to the script
+    """
+
+    # If no regex is provided, use the search string as the regex
+    if not args.regex:
+        args.regex = args.search_string
+
     return args
