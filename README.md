@@ -1,8 +1,16 @@
 # 😁 Welcome!!
 
+<br>
+
+![Badge Workflow] 
+[![Badge License]][License] 
+![Badge Language] 
+[![Badge Pull Requests]][Pull Requests] 
+[![Badge Issues]][Issues] 
+
+<br>
+
 # Contents
-- [😁 Welcome!!](#-welcome)
-- [Contents](#contents)
 - [🌐 Dynamic Web Scraper](#-dynamic-web-scraper)
 - [🚀 Quick start](#-quick-start)
 - [💡 Use case examples](#-use-case-examples)
@@ -138,3 +146,23 @@ You may also need to install the latest geckodriver from [here](https://github.c
 # 👥 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your suggested changes.
+
+<!----------------------------------------------------------------------------->
+
+[Stars]: https://starchart.cc/P-ict0/Dynamic-Web-Scraper
+[DWS]: https://github.com/P-ict0/Dynamic-Web-Scraper
+
+[Pull Requests]: https://github.com/P-ict0/Dynamic-Web-Scraper/pulls
+[Issues]: https://github.com/P-ict0/Dynamic-Web-Scraper/issues
+
+[License]: LICENSE
+
+<!----------------------------------{ Badges }--------------------------------->
+
+[Badge Workflow]: https://github.com/P-ict0/Dynamic-Web-Scraper/actions/workflows/release.yml/badge.svg
+
+[Badge Issues]: https://img.shields.io/github/issues/P-ict0/Dynamic-Web-Scraper
+[Badge Pull Requests]: https://img.shields.io/github/issues-pr/P-ict0/Dynamic-Web-Scraper
+[Badge Language]: https://img.shields.io/github/languages/top/P-ict0/Dynamic-Web-Scraper
+[Badge License]: https://img.shields.io/github/license/P-ict0/Dynamic-Web-Scraper
+[Badge Lines]: https://img.shields.io/tokei/lines/github/P-ict0/Dynamic-Web-Scraper
