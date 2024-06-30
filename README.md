@@ -1,3 +1,6 @@
+
+<div align = center>
+  
 # 😁 Welcome!!
 
 <br>
@@ -9,6 +12,8 @@
 [![Badge Issues]][Issues] 
 
 <br>
+
+</div>
 
 # Contents
 - [🌐 Dynamic Web Scraper](#-dynamic-web-scraper)
@@ -61,7 +66,7 @@ This is useful, for example to notify you when a certain keyword is found on a w
 
 (Go [below](#-manual-installation) for manual installation.)
 
-From [PyPI](https://pypi.org/project/dynamic-scraper/)
+From [PyPI][PyPiLink]
 
 `pipx` is optional but recommended, you can use `pip` instead.
 
@@ -119,7 +124,7 @@ Also see [common errors](#-common-errors) if you encounter any issues with the b
 # ✏ Manual Installation
 
 ```bash
-git clone https://github.com/P-ict0/AngularJS-Dynamic-Web-Scraper.git
+git clone https://github.com/P-ict0/Dynamic-Web-Scraper.git
 ```
 
 Recommended to use a virtual environment:
@@ -141,7 +146,7 @@ python src/web_scraper/scraper.py [args]
 
 # ❌ Common errors
 
-You may also need to install the latest geckodriver from [here](https://github.com/mozilla/geckodriver/releases) and add it to your PATH.
+You may also need to install the latest geckodriver from [here][Geckodriver] and add it to your PATH.
 
 # 👥 Contributing
 
@@ -154,6 +159,8 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 [Pull Requests]: https://github.com/P-ict0/Dynamic-Web-Scraper/pulls
 [Issues]: https://github.com/P-ict0/Dynamic-Web-Scraper/issues
+[PyPiLink]: https://pypi.org/project/dynamic-scraper/
+[Geckodriver]: https://github.com/mozilla/geckodriver/releases
 
 [License]: LICENSE
 
